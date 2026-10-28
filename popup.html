@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>AI 简历助手</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <header class="head">
+    <div class="logo">📄 AI 简历助手</div>
+    <div class="head-actions">
+      <span id="statusDot" class="dot"></span>
+      <button id="openOptions" class="link-btn" title="设置">⚙️ 设置</button>
+    </div>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab active" data-tab="job">① 岗位</button>
+    <button class="tab" data-tab="resume">② 简历</button>
+    <button class="tab" data-tab="chat">③ 对话</button>
+  </nav>
+
+  <!-- ===== Tab 1: 岗位 ===== -->
+  <section class="tabpane" id="pane-job">
+    <div class="panel">
+      <div class="step-title">抓取招聘信息</div>
+      <div class="btn-row">
+        <button id="extractBtn" class="btn">📋 读取页面文字</button>
+        <button id="captureBtn" class="btn">📸 截屏识别</button>
+      </div>
+      <div id="step1Status" class="status"></div>
+    </div>
+
+    <div class="panel" id="jobPanel" hidden>
+      <div class="step-title">岗位信息 <span class="muted">（可手动修改）</span></div>
+      <div class="grid2">
+        <label class="mini"><span>公司</span><input id="jobCompany" /></label>
+        <label class="mini"><span>岗位</span><input id="jobTitle" /></label>
+        <label class="mini"><span>地点</span><input id="jobLocation" /></label>
+        <label class="mini"><span>薪资</span><input id="jobSalary" /></label>
+      </div>
+      <label class="mini"><span>岗位职责</span><textarea id="jobRespons" rows="3"></textarea></label>
+      <label class="mini"><span>任职要求</span><textarea id="jobReqs" rows="4"></textarea></label>
+      <label class="mini"><span>关键词 / 加分项</span><textarea id="jobKeywords" rows="2"></textarea></label>
+      <button id="generateBtn" class="btn primary full">✨ 生成定制简历</button>
+      <div id="step2Status" class="status"></div>
+    </div>
+  </section>
+
+  <!-- ===== Tab 2: 简历 ===== -->
+  <section class="tabpane" id="pane-resume" hidden>
+    <div class="panel">
+      <div class="row-between">
+        <button id="importToggle" class="btn ghost shrink">📥 导入旧简历</button>
+        <span class="muted small">导入历史简历，AI 自动分析填入资料</span>
+      </div>
+      <div id="importArea" hidden>
+        <label class="mini"><span>粘贴简历文本，或上传文件（txt / md / 图片）</span>
+          <textarea id="importText" rows="4" placeholder="粘贴你的旧简历文字…"></textarea>
+        </label>
+        <div class="btn-row">
+          <input type="file" id="importFile" accept=".txt,.md,.markdown,.png,.jpg,.jpeg,.webp" hidden />
+          <button id="importFileBtn" class="btn">📎 选择文件</button>
+          <button id="importAnalyze" class="btn primary">✨ 智能分析并导入</button>
+        </div>
+        <div id="importResult" class="status"></div>
+      </div>
+    </div>
+
+    <div class="panel" id="resumePanel" hidden>
+      <div class="step-title">定制简历 <span class="muted">（每段可单独润色）</span></div>
+      <div id="resumeList"></div>
+      <div class="btn-row">
+        <button id="pdfBtn" class="btn primary">📄 导出 PDF</button>
+        <button id="copyBtn" class="btn">📋 复制</button>
+        <button id="downloadBtn" class="btn">⬇️ .md</button>
+      </div>
+      <div id="step3Status" class="status"></div>
+    </div>
+  </section>
+
+  <!-- ===== Tab 3: 对话 ===== -->
+  <section class="tabpane" id="pane-chat" hidden>
+    <div class="chat-wrap">
+      <div id="chatLog" class="chat-log"></div>
+      <div class="chat-input-row">
+        <input id="chatInput" type="text" placeholder="输入指令，如：把项目经历写得更量化" />
+        <button id="chatSend" class="btn primary shrink">发送</button>
+      </div>
+      <div class="chat-tips">💡 AI 会基于当前简历 + 岗位，按你的指令直接修改，改完自动同步到「简历」页。</div>
+    </div>
+  </section>
+
+  <footer class="foot">数据仅保存在本地浏览器 · API Key 不离开你的设备</footer>
+
+  <script src="pdf.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

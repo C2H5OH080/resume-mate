@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI 简历助手 · 设置</title>
+  <link rel="stylesheet" href="options.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header class="topbar">
+      <div>
+        <h1>AI 简历助手 <span class="badge">设置</span></h1>
+        <p class="sub">填一次个人信息 + 配置你的模型 API，之后在招聘页一键生成定制简历。</p>
+      </div>
+      <button id="saveBtn" class="btn primary">保存设置</button>
+    </header>
+
+    <section class="card">
+      <h2>🔑 API 配置 <span class="hint">（支持任意 OpenAI 兼容协议模型 / 中转站）</span></h2>
+      <div class="grid2">
+        <label class="field">
+          <span>接口地址 Base URL</span>
+          <input id="baseUrl" type="text" placeholder="https://api.openai.com/v1" />
+          <small>会拼接为 <code>{baseUrl}/chat/completions</code>。将来接入你自己的中转站时，改这里即可。</small>
+        </label>
+        <label class="field">
+          <span>API Key</span>
+          <input id="apiKey" type="password" placeholder="sk-..." autocomplete="off" />
+        </label>
+        <label class="field">
+          <span>文本模型 Model</span>
+          <input id="model" type="text" placeholder="gpt-4o-mini" />
+          <small>用于解析岗位、生成简历、润色经历。</small>
+        </label>
+        <label class="field">
+          <span>视觉模型 Vision Model</span>
+          <input id="visionModel" type="text" placeholder="gpt-4o" />
+          <small>用于「截屏识别岗位」，需支持图片输入；若填错可只使用「读取文字」。</small>
+        </label>
+      </div>
+      <div class="row">
+        <button id="testBtn" class="btn ghost">测试连接</button>
+        <span id="testResult" class="test-result"></span>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>👤 基本信息</h2>
+      <div class="grid2">
+        <label class="field"><span>姓名</span><input id="name" type="text" placeholder="张三" /></label>
+        <label class="field"><span>求职意向岗位</span><input id="targetTitle" type="text" placeholder="前端开发工程师" /></label>
+        <label class="field"><span>电话</span><input id="phone" type="text" placeholder="13800000000" /></label>
+        <label class="field"><span>邮箱</span><input id="email" type="text" placeholder="you@example.com" /></label>
+        <label class="field"><span>所在城市</span><input id="location" type="text" placeholder="无锡" /></label>
+        <label class="field"><span>工作年限</span><input id="years" type="text" placeholder="3 年" /></label>
+      </div>
+      <label class="field">
+        <span>一句话个人简介（可选，AI 会重写）</span>
+        <textarea id="summary" rows="3" placeholder="3 年 Web 前端经验，主导过 XX 项目……"></textarea>
+      </label>
+    </section>
+
+    <section class="card">
+      <h2>🎓 教育经历</h2>
+      <div id="educationList" class="list"></div>
+      <button class="btn ghost add-btn" data-add="education">+ 添加教育经历</button>
+    </section>
+
+    <section class="card">
+      <h2>💼 工作经历</h2>
+      <div id="experienceList" class="list"></div>
+      <button class="btn ghost add-btn" data-add="experience">+ 添加工作经历</button>
+    </section>
+
+    <section class="card">
+      <h2>🧩 项目经历</h2>
+      <div id="projectList" class="list"></div>
+      <button class="btn ghost add-btn" data-add="project">+ 添加项目经历</button>
+    </section>
+
+    <section class="card">
+      <h2>🛠 技能 & 证书</h2>
+      <div class="grid2">
+        <label class="field">
+          <span>专业技能（每行一条）</span>
+          <textarea id="skills" rows="5" placeholder="JavaScript / TypeScript&#10;Vue / React&#10;Node.js"></textarea>
+        </label>
+        <label class="field">
+          <span>证书 / 其他（每行一条）</span>
+          <textarea id="certifications" rows="5" placeholder="PMP 项目管理认证&#10;英语 CET-6"></textarea>
+        </label>
+      </div>
+    </section>
+
+    <div class="footer">
+      <button id="saveBtn2" class="btn primary big">保存设置</button>
+      <span id="saveMsg" class="save-msg"></span>
+    </div>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>

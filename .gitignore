@@ -1,0 +1,28 @@
+# 系统文件
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# 编辑器 / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 依赖
+node_modules/
+
+# 构建产物
+dist/
+build/
+out/
+*.crx
+*.zip
+*.pem
+
+# 日志
+*.log
+
+# 测试临时文件
+*.test.pdf
+tmp/

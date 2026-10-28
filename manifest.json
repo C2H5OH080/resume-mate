@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "AI 简历助手 (ResumeMate)",
+  "short_name": "ResumeMate",
+  "version": "0.1.0",
+  "description": "一键抓取/截屏招聘信息，AI 自动生成匹配岗位的定制简历，并支持逐段润色。可自定义 API 接入任意模型（OpenAI 兼容协议）。",
+  "permissions": ["storage", "activeTab", "scripting"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "AI 简历助手",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
